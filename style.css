@@ -1,79 +1,92 @@
-body {
+* {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow: hidden;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  overflow: hidden;
-  color: #222;
+  color: #fff;
 }
 
-/* Background video styling */
+/* Background video */
 #bg-video {
   position: fixed;
   right: 0;
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  z-index: -1;
+  z-index: -2;
   object-fit: cover;
-  filter: brightness(70%);
+}
+
+/* Moving clouds */
+.clouds {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.cloud {
+  position: absolute;
+  top: 10%;
+  width: 200px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  animation: moveClouds 60s linear infinite;
+}
+
+.cloud:nth-child(2) {
+  top: 40%;
+  left: -250px;
+  animation-duration: 90s;
+}
+
+.cloud:nth-child(3) {
+  top: 70%;
+  left: -350px;
+  animation-duration: 120s;
+}
+
+@keyframes moveClouds {
+  from { left: -300px; }
+  to { left: 100%; }
 }
 
 /* Timer container */
 .timer-container {
-  background: rgba(255, 255, 255, 0.7);
-  padding: 30px 50px;
-  border-radius: 20px;
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-h1 {
-  margin-bottom: 10px;
-  font-size: 2em;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 30px 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .display {
-  font-size: 2.5em;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: 3rem;
+  margin: 20px 0;
 }
 
 button {
-  background: #a0c4ff;
+  background: #ffb6c1;
   border: none;
   padding: 10px 20px;
   margin: 5px;
-  border-radius: 8px;
-  font-size: 1em;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: 0.3s;
+  font-size: 1rem;
 }
 
 button:hover {
-  background: #89b4f8;
-}
-
-/* Cloud styling */
-.cloud {
-  position: absolute;
-  background: url('cloud.png');
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 150px;
-  height: 80px;
-  opacity: 0.7;
-  z-index: 0;
-  animation: moveClouds 50s linear infinite;
-}
-
-#cloud1 { top: 10%; left: -200px; animation-duration: 60s; }
-#cloud2 { top: 30%; left: -300px; animation-duration: 80s; }
-#cloud3 { top: 60%; left: -400px; animation-duration: 70s; }
-
-@keyframes moveClouds {
-  from { left: -300px; }
-  to { left: 110%; }
+  background: #ff8fa3;
 }
