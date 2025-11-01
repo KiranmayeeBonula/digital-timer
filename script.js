@@ -1,53 +1,46 @@
-let timer;
-let seconds = 0;
-let minutes = 0;
-let hours = 0;
+let startTime;
+let updatedTime;
+let difference = 0;
+let timerInterval;
 let running = false;
 
-function startTimer() {
+const display = document.getElementById("display");
+const alertSound = document.getElementById("alert-sound");
+
+document.getElementById("start").addEventListener("click", () => {
   if (!running) {
     running = true;
-    timer = setInterval(updateTimer, 1000);
+    startTime = new Date().getTime() - difference;
+    timerInterval = setInterval(updateDisplay, 1000);
   }
-}
+});
 
-function pauseTimer() {
+document.getElementById("pause").addEventListener("click", () => {
+  if (running) {
+    running = false;
+    clearInterval(timerInterval);
+  }
+});
+
+document.getElementById("reset").addEventListener("click", () => {
   running = false;
-  clearInterval(timer);
-}
+  clearInterval(timerInterval);
+  difference = 0;
+  display.innerHTML = "00:00:00";
+  alertSound.play();
+});
 
-function resetTimer() {
-  running = false;
-  clearInterval(timer);
-  seconds = 0;
-  minutes = 0;
-  hours = 0;
+function updateDisplay() {
+  updatedTime = new Date().getTime() - startTime;
+  difference = updatedTime;
 
-  // 🎵 Play soft beep sound when timer resets
-  const beep = document.getElementById("beep-sound");
-  if (beep) beep.play();
+  let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+  let minutes = Math.floor((difference / (1000 * 60)) % 60);
+  let seconds = Math.floor((difference / 1000) % 60);
 
-  // Reset the timer display
-  document.getElementById("timer").innerText = "00:00:00";
-}
+  hours = (hours < 10) ? "0" + hours : hours;
+  minutes = (minutes < 10) ? "0" + minutes : minutes;
+  seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-function updateTimer() {
-  seconds++;
-  if (seconds === 60) {
-    seconds = 0;
-    minutes++;
-  }
-  if (minutes === 60) {
-    minutes = 0;
-    hours++;
-  }
-
-  const formatted =
-    (hours < 10 ? "0" + hours : hours) +
-    ":" +
-    (minutes < 10 ? "0" + minutes : minutes) +
-    ":" +
-    (seconds < 10 ? "0" + seconds : seconds);
-
-  document.getElementById("timer").innerText = formatted;
+  display.innerHTML = `${hours}:${minutes}:${seconds}`;
 }
