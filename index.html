@@ -4,13 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Digital Timer</title>
-  <<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="cloud"></div>
-<div class="cloud"></div>
-<div class="cloud"></div>
+  <!-- Background video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="bg.mp4" type="video/mp4">
+  </video>
+
+  <!-- Floating clouds -->
+  <div class="cloud" id="cloud1"></div>
+  <div class="cloud" id="cloud2"></div>
+  <div class="cloud" id="cloud3"></div>
+
+  <!-- Timer -->
   <div class="timer-container">
     <h1>Digital Timer</h1>
     <div class="display" id="display">00:00:00</div>
@@ -21,7 +28,7 @@
     </div>
   </div>
 
+  <audio id="alert-sound" src="alert.mp3"></audio>
   <script src="script.js"></script>
-<audio id="beep-sound" src="https://www.soundjay.com/button/beep-07.wav" preload="auto"></audio>
 </body>
 </html>
