@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Timer</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Timer ⏳</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Background video -->
+  <!-- Video Background -->
   <video autoplay muted loop id="bg-video">
     <source src="bg.mp4" type="video/mp4">
   </video>
 
-  <!-- Floating clouds -->
-  <div class="cloud" id="cloud1"></div>
-  <div class="cloud" id="cloud2"></div>
-  <div class="cloud" id="cloud3"></div>
+  <!-- Moving Clouds -->
+  <div class="clouds">
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+  </div>
 
-  <!-- Timer -->
+  <!-- Timer Section -->
   <div class="timer-container">
     <h1>Digital Timer</h1>
     <div class="display" id="display">00:00:00</div>
@@ -28,7 +30,7 @@
     </div>
   </div>
 
-  <audio id="alert-sound" src="alert.mp3"></audio>
+  <audio id="alert-sound" src="alert.mp3" preload="auto"></audio>
   <script src="script.js"></script>
 </body>
 </html>
