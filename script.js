@@ -1,46 +1,43 @@
-let startTime;
-let updatedTime;
-let difference = 0;
-let timerInterval;
-let running = false;
+let timer;
+let seconds = 0;
+let isRunning = false;
 
 const display = document.getElementById("display");
+const startBtn = document.getElementById("start");
+const pauseBtn = document.getElementById("pause");
+const resetBtn = document.getElementById("reset");
 const alertSound = document.getElementById("alert-sound");
 
-document.getElementById("start").addEventListener("click", () => {
-  if (!running) {
-    running = true;
-    startTime = new Date().getTime() - difference;
-    timerInterval = setInterval(updateDisplay, 1000);
+function updateDisplay() {
+  let hrs = Math.floor(seconds / 3600);
+  let mins = Math.floor((seconds % 3600) / 60);
+  let secs = seconds % 60;
+
+  display.textContent = 
+    `${hrs.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+}
+
+startBtn.addEventListener("click", () => {
+  if (!isRunning) {
+    isRunning = true;
+    timer = setInterval(() => {
+      seconds++;
+      updateDisplay();
+    }, 1000);
   }
 });
 
-document.getElementById("pause").addEventListener("click", () => {
-  if (running) {
-    running = false;
-    clearInterval(timerInterval);
-  }
+pauseBtn.addEventListener("click", () => {
+  isRunning = false;
+  clearInterval(timer);
 });
 
-document.getElementById("reset").addEventListener("click", () => {
-  running = false;
-  clearInterval(timerInterval);
-  difference = 0;
-  display.innerHTML = "00:00:00";
+resetBtn.addEventListener("click", () => {
+  isRunning = false;
+  clearInterval(timer);
+  seconds = 0;
+  updateDisplay();
   alertSound.play();
 });
 
-function updateDisplay() {
-  updatedTime = new Date().getTime() - startTime;
-  difference = updatedTime;
-
-  let hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-  let minutes = Math.floor((difference / (1000 * 60)) % 60);
-  let seconds = Math.floor((difference / 1000) % 60);
-
-  hours = (hours < 10) ? "0" + hours : hours;
-  minutes = (minutes < 10) ? "0" + minutes : minutes;
-  seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-  display.innerHTML = `${hours}:${minutes}:${seconds}`;
-}
+updateDisplay();
