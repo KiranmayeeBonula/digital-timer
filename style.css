@@ -1,48 +1,65 @@
-/* Import the cozy vibe */
+/* General body style */
 body {
-  background: linear-gradient(135deg, #f5d0fe, #dbeafe);
-  font-family: 'Poppins', sans-serif;
+  margin: 0;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(-45deg, #f6d5f7, #fbe9d7, #c2e9fb, #d4fc79);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
 }
 
-/* Timer box */
+/* Gradient animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Timer container */
 .timer-container {
-  background-color: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.85);
   padding: 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: transform 0.3s ease;
 }
 
-/* Time display */
-.display {
-  font-size: 3em;
-  font-weight: 700;
-  color: #1e293b;
+.timer-container:hover {
+  transform: scale(1.05);
+}
+
+/* Title */
+h1 {
   margin-bottom: 25px;
-  letter-spacing: 2px;
+  color: #333;
+}
+
+/* Timer text */
+#timer {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #444;
 }
 
 /* Buttons */
 button {
-  background: #818cf8;
-  color: white;
+  margin: 10px;
+  padding: 10px 25px;
+  font-size: 18px;
   border: none;
-  padding: 12px 25px;
-  margin: 6px;
   border-radius: 12px;
+  background-color: #a0c4ff;
+  color: #fff;
   cursor: pointer;
-  font-weight: 500;
-  transition: 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
 button:hover {
-  background: #6366f1;
-  transform: scale(1.05);
+  background-color: #bdb2ff;
+  transform: translateY(-3px);
 }
