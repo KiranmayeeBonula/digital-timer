@@ -1,65 +1,35 @@
-/* General body style */
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(-45deg, #f6d5f7, #fbe9d7, #c2e9fb, #d4fc79);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
+/* 🌥️ Floating clouds background */
+.cloud {
+  position: absolute;
+  background: url("https://i.ibb.co/4j5kYBx/cloud.png") no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 120px;
+  opacity: 0.7;
+  animation: moveClouds 60s linear infinite;
 }
 
-/* Gradient animation */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.cloud:nth-child(1) {
+  top: 15%;
+  left: -200px;
+  animation-delay: 0s;
 }
 
-/* Timer container */
-.timer-container {
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 40px;
-  border-radius: 25px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease;
+.cloud:nth-child(2) {
+  top: 40%;
+  left: -250px;
+  width: 250px;
+  animation-delay: 10s;
 }
 
-.timer-container:hover {
-  transform: scale(1.05);
+.cloud:nth-child(3) {
+  top: 65%;
+  left: -300px;
+  width: 180px;
+  animation-delay: 20s;
 }
 
-/* Title */
-h1 {
-  margin-bottom: 25px;
-  color: #333;
-}
-
-/* Timer text */
-#timer {
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 25px;
-  color: #444;
-}
-
-/* Buttons */
-button {
-  margin: 10px;
-  padding: 10px 25px;
-  font-size: 18px;
-  border: none;
-  border-radius: 12px;
-  background-color: #a0c4ff;
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s;
-}
-
-button:hover {
-  background-color: #bdb2ff;
-  transform: translateY(-3px);
+@keyframes moveClouds {
+  from { transform: translateX(0); }
+  to { transform: translateX(120vw); }
 }
