@@ -1,114 +1,79 @@
-/* 🌸 General body style */
 body {
   margin: 0;
-  height: 100vh;
+  font-family: 'Poppins', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
+  height: 100vh;
   overflow: hidden;
-  background: linear-gradient(-45deg, #fbc2eb, #a6c1ee, #fbd786, #c6ffdd);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+  color: #222;
 }
 
-/* 🌈 Background gradient animation */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Background video styling */
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+  filter: brightness(70%);
 }
 
-/* ☁️ Floating clouds */
-.cloud {
-  position: absolute;
-  background: url("https://i.ibb.co/4j5kYBx/cloud.png") no-repeat;
-  background-size: contain;
-  width: 200px;
-  height: 120px;
-  opacity: 0.7;
-  animation: moveClouds 60s linear infinite;
-  z-index: 0;
-}
-
-.cloud:nth-child(1) {
-  top: 15%;
-  left: -200px;
-  animation-delay: 0s;
-}
-
-.cloud:nth-child(2) {
-  top: 40%;
-  left: -250px;
-  width: 250px;
-  animation-delay: 10s;
-}
-
-.cloud:nth-child(3) {
-  top: 65%;
-  left: -300px;
-  width: 180px;
-  animation-delay: 20s;
-}
-
-@keyframes moveClouds {
-  from { transform: translateX(0); }
-  to { transform: translateX(120vw); }
-}
-
-/* ⏱️ Timer container */
+/* Timer container */
 .timer-container {
-  position: relative;
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.85);
-  padding: 40px;
-  border-radius: 25px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  padding: 30px 50px;
+  border-radius: 20px;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-.timer-container:hover {
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* 💖 Title */
 h1 {
-  margin-bottom: 25px;
-  color: #333;
-  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 2em;
 }
 
-/* ⏰ Timer display */
-#timer {
-  font-size: 48px;
+.display {
+  font-size: 2.5em;
   font-weight: bold;
-  margin-bottom: 25px;
-  color: #444;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-/* 💫 Buttons */
 button {
-  margin: 10px;
-  padding: 10px 25px;
-  font-size: 18px;
+  background: #a0c4ff;
   border: none;
-  border-radius: 12px;
-  background-color: #a0c4ff;
-  color: #fff;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 8px;
+  font-size: 1em;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 5px 15px rgba(160, 196, 255, 0.4);
+  transition: background 0.3s;
 }
 
 button:hover {
-  background-color: #bdb2ff;
-  transform: translateY(-3px);
-  box-shadow: 0 7px 20px rgba(160, 196, 255, 0.6);
+  background: #89b4f8;
 }
 
-button:active {
-  transform: translateY(1px);
+/* Cloud styling */
+.cloud {
+  position: absolute;
+  background: url('cloud.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 80px;
+  opacity: 0.7;
+  z-index: 0;
+  animation: moveClouds 50s linear infinite;
+}
+
+#cloud1 { top: 10%; left: -200px; animation-duration: 60s; }
+#cloud2 { top: 30%; left: -300px; animation-duration: 80s; }
+#cloud3 { top: 60%; left: -400px; animation-duration: 70s; }
+
+@keyframes moveClouds {
+  from { left: -300px; }
+  to { left: 110%; }
 }
