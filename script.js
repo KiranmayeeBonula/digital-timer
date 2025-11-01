@@ -1,41 +1,53 @@
-let [hours, minutes, seconds] = [0, 0, 0];
-let timerRef = document.getElementById("display");
-let interval = null;
+let timer;
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
 let running = false;
 
-document.getElementById("start").addEventListener("click", () => {
+function startTimer() {
   if (!running) {
     running = true;
-    interval = setInterval(displayTimer, 1000);
+    timer = setInterval(updateTimer, 1000);
   }
-});
+}
 
-document.getElementById("pause").addEventListener("click", () => {
+function pauseTimer() {
   running = false;
-  clearInterval(interval);
-});
+  clearInterval(timer);
+}
 
-document.getElementById("reset").addEventListener("click", () => {
+function resetTimer() {
   running = false;
-  clearInterval(interval);
-  [hours, minutes, seconds] = [0, 0, 0];
-  timerRef.innerHTML = "00:00:00";
-});
+  clearInterval(timer);
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
 
-function displayTimer() {
+  // 🎵 Play soft beep sound when timer resets
+  const beep = document.getElementById("beep-sound");
+  if (beep) beep.play();
+
+  // Reset the timer display
+  document.getElementById("timer").innerText = "00:00:00";
+}
+
+function updateTimer() {
   seconds++;
   if (seconds === 60) {
     seconds = 0;
     minutes++;
-    if (minutes === 60) {
-      minutes = 0;
-      hours++;
-    }
+  }
+  if (minutes === 60) {
+    minutes = 0;
+    hours++;
   }
 
-  let h = hours < 10 ? "0" + hours : hours;
-  let m = minutes < 10 ? "0" + minutes : minutes;
-  let s = seconds < 10 ? "0" + seconds : seconds;
+  const formatted =
+    (hours < 10 ? "0" + hours : hours) +
+    ":" +
+    (minutes < 10 ? "0" + minutes : minutes) +
+    ":" +
+    (seconds < 10 ? "0" + seconds : seconds);
 
-  timerRef.innerHTML = `${h}:${m}:${s}`;
+  document.getElementById("timer").innerText = formatted;
 }
