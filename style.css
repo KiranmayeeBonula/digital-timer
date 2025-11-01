@@ -1,0 +1,48 @@
+/* Import the cozy vibe */
+body {
+  background: linear-gradient(135deg, #f5d0fe, #dbeafe);
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
+}
+
+/* Timer box */
+.timer-container {
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Time display */
+.display {
+  font-size: 3em;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+/* Buttons */
+button {
+  background: #818cf8;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  margin: 6px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #6366f1;
+  transform: scale(1.05);
+}
